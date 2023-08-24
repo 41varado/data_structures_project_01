@@ -6,12 +6,10 @@ call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
 
 if not exist bin\ (
 	mkdir bin
-) else (
-	del /s /q bin\*.*
 )
 
 pushd bin
-cl.exe -EHsc -Za -Zi -fsanitize=address %src%\main.cpp
+cl.exe -EHsc -Za -Zi -std:c++20 -fsanitize=address %src%\*.cpp
 
 echo.
 main.exe
