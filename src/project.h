@@ -10,7 +10,9 @@ struct PROJECT
     double          cost;
     int             number;
     std::string     name;
-    DATE    startDate, endDate;
+    DATE            startDate, endDate;
+
+    bool operator ==(const PROJECT&) const;
 };
 
 std::string format_project_date(const DATE&);
