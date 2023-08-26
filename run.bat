@@ -9,7 +9,7 @@ if not exist bin\ (
 )
 
 pushd bin
-cl.exe -EHsc -Za -Zi -std:c++20 -fsanitize=address %src%\*.cpp
+cl.exe -EHsc -Za -Zi -std:c++20 -fsanitize=address -DWIN32_LEAN_AND_MEAN %src%\*.cpp
 
 echo.
 main.exe
