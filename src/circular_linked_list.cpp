@@ -79,3 +79,15 @@ void circular_linked_list::append(const PROJECT& project)
 		tail_node = new_node;
 	}
 }
+
+bool circular_linked_list::modify(const PROJECT& oldProject, const PROJECT& newProject)
+{
+    NODE* nodeToModify = find(oldProject);
+
+    if (nodeToModify) {
+        nodeToModify->data = newProject;
+        return true;
+    }
+
+    return false;
+}
