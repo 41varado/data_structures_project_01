@@ -21,4 +21,5 @@ class circular_linked_list
 		bool remove(const NODE&);
 		NODE* find(const PROJECT&);
 		void append(const PROJECT&);
+		bool modify(const PROJECT& oldProject, const PROJECT& newProject);
 };
