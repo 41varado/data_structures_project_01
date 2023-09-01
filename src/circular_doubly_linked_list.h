@@ -8,14 +8,14 @@ struct NODE {
    NODE *previous_node;
 };
 
-class circular_linked_list
+class circular_doubly_linked_list
 {
 	private:
 		NODE *head_node,
 			 *tail_node;
 
 	public:
-		circular_linked_list() : head_node(nullptr), tail_node(nullptr)
+		circular_doubly_linked_list() : head_node(nullptr), tail_node(nullptr)
 		{  }
 		
 		bool remove(const NODE&);

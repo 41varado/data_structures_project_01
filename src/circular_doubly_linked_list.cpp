@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "circular_linked_list.h"
+#include "circular_doubly_linked_list.h"
 #include "project.h"
 
 using namespace std;
 
-bool circular_linked_list::remove(const NODE& node)
+bool circular_doubly_linked_list::remove(const NODE& node)
 {
-	if (head_node == nullptr) {
+	if (!head_node) {
 		return false;  
 	}
 
@@ -45,16 +45,17 @@ bool circular_linked_list::remove(const NODE& node)
 	return false; 
 }
 
-NODE* circular_linked_list::find(const PROJECT& project)
+NODE* circular_doubly_linked_list::find(const PROJECT& project)
 {
-	NODE* current_node = head_node;
-
 	if (head_node) {
+		NODE* current_node = head_node;
+		
 		do {
 			if (current_node->data == project) {
 
 				return current_node;
 			}
+		
 			current_node = current_node->next_node;
 		} while (current_node != head_node);
 	}
@@ -62,7 +63,7 @@ NODE* circular_linked_list::find(const PROJECT& project)
 	return nullptr;
 }
 
-void circular_linked_list::append(const PROJECT& project)
+void circular_doubly_linked_list::append(const PROJECT& project)
 {
 	NODE* new_node = new NODE();
 	new_node->data = project;
@@ -80,7 +81,7 @@ void circular_linked_list::append(const PROJECT& project)
 	}
 }
 
-bool circular_linked_list::modify(const PROJECT& oldProject, const PROJECT& newProject)
+bool circular_doubly_linked_list::modify(const PROJECT& oldProject, const PROJECT& newProject)
 {
     NODE* nodeToModify = find(oldProject);
 

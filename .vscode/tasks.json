@@ -5,8 +5,8 @@
             "label": "C/C++: cl.exe build project",
             "command": "cl.exe",
             "args": [
-                "-std:c++20",
-				"-DWIN32_LEAN_AND_MEAN",
+                "/std:c++20",
+				"/DWIN32_LEAN_AND_MEAN",
                 "/Zi",
                 "/EHsc",
                 "/nologo",

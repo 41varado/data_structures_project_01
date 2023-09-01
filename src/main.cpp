@@ -1,9 +1,10 @@
-#include<iostream>
+#include <iostream>
 
 #include <windows.h>
 
-#include "circular_linked_list.h"
+#include "circular_doubly_linked_list.h"
 #include "project.h"
+#include "util.h"
 
 // TODO: Just a little test: https://en.cppreference.com/w/cpp/chrono/parse
 void get_date()
@@ -20,10 +21,139 @@ void get_date()
     //};
 }
 
+template <typename T>
+bool read_number(T& buffer);
+
+void get_non_empty_string(std::string& buffer, std::string&& inputMessage, std::string&& errorMessage);
+
 int main()
 {
+    circular_doubly_linked_list projects;
+    short option = -1;
+
     SetConsoleOutputCP(CP_UTF8);
-    std::cout << "Helló!\n";
+
+    do
+    {
+        system("cls");
+        std::cout <<    "Sistema de administración de proyectos de obra pública\n"
+                        "1. Agregar nuevo proyecto.\n"
+                        "2. Eliminar proyecto.\n"
+                        "4. Modificar proyecto.\n"
+                        "3. Mostrar información de proyecto.\n"
+                        "5. Listar proyectos.\n"
+                        "6. Eliminar todos los proyectos.\n"
+                        "7. Salir.\n"
+                        "\nElija una opción: ";
+
+        
+        if (!read_number<short>(option))
+        {
+            std::cout << "Debe ingresar un número entero.";
+            std::cin.get();
+            continue;
+        }
+        
+        system("cls");
+        switch (option)
+        {
+            case 1:
+            {
+                PROJECT newProject
+                {
+                    // .cost       = ,
+                    // .endDate    = ,
+                    // .name       = std::move(projectName),
+                    // .number     = ,
+                    // .startDate  = ,
+                };
+                
+                std::cout   <<  "Información del nuevo proyecto\n";
+                get_non_empty_string(
+                    newProject.name,
+                    "Nombre del proyecto: ",
+                    "Debe ingresar un nombre de proyecto. Intentelo de nuevo.\n");
+                
+                do
+                {
+                    std::cout << "Número del proyecto: ";
+                    
+                    if (read_number<int>(newProject.number)) {
+                        break;
+                    }
+
+                    std::cout << "Debe ingresar un número entero. Intentelo de nuevo.\n";
+                } while (true);
+
+                do
+                {
+                    std::cout << "Costo del proyecto: ";
+                    
+                    if (read_number<double>(newProject.cost)) {
+                        break;
+                    }
+
+                    std::cin.clear();
+                    std::cout << "Debe ingresar un número (puede contener decimales). Intentelo de nuevo.\n";
+                } while (true);
+
+                // WIP
+
+                break;
+            }
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            default:
+                std::cout << "Debe ingresar una opción del menú.";
+                std::cin.get();
+                break;
+        }
+    }
+    while (option != 7);
+}
+
+template<typename T>
+bool read_number(T& buffer)
+{
+    bool invalidInput;
+    if ((invalidInput = !(std::cin >> buffer)))
+    {
+        std::cin.clear();
+    }
+
+    if ((invalidInput = std::cin.peek() != '\n'))
+    {
+        std::cin.ignore(1000, '\n');
+    }
+
+    return !invalidInput;
+}
+
+void get_non_empty_string(std::string& buffer, std::string&& inputMessage, std::string&& errorMessage)
+{
+    do
+    {
+        std::cout << inputMessage;
+        std::cin.ignore(1000, '\n');
+        std::getline(std::cin, buffer);
+        trim(buffer);
+
+        if (!buffer.empty()) {
+            break;
+        }
+
+        std::cout << errorMessage;
+    } while (true);
 }
 
 //int main() {
