@@ -19,10 +19,10 @@ class circular_doubly_linked_list
 		{  }
 		
 		bool remove(const NODE&);
+		bool modify(const PROJECT& oldProject, const PROJECT& newProject);
 		NODE* find(const PROJECT&);
 		void append(const PROJECT&);
-		bool modify(const PROJECT& oldProject, const PROJECT& newProject);
 		void displayForward();
-		void displayBackward();
+		void displayBackwards();
 
 };

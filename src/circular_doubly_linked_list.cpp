@@ -96,31 +96,31 @@ bool circular_doubly_linked_list::modify(const PROJECT& oldProject, const PROJEC
 void circular_doubly_linked_list::displayForward()
 {
 	if(!head_node) {
-		std::cout << "La lista se encuentra vacia. " std::endl;
+		std::cout << "La lista se encuentra vacia.\n";
 		return;
 	}
 
 	NODE* current_node = head_node;
 
 	do {
-		std:cout<< "Nodo:" <<current_node->data << std::endl;
-		current_node = current_node->data << std::endl;
+		std:cout << "Proyecto [#" << current_node->data.number << "]: " << current_node->data.name << '\n';
+		current_node = current_node->next_node;
 	} while(current_node != head_node);
 }
 
-void circular_doubly_linked_list::displayBackward()
+void circular_doubly_linked_list::displayBackwards()
 {
 	if(!tail_node) {
-		std::cout<< "La lista se encuentra vacia" << std::endl;
+		std::cout << "La lista se encuentra vacía.\n";
 		return;
 	}
 
 	NODE* current_node = tail_node;
 
 	do {
-		std::cout << "Nodo: " << current_node->data << std::endl;
+		std::cout << "Proyecto [#" << current_node->data.number << "]: " << current_node->data.name << '\n';
 		current_node = current_node->previous_node;
-	}while(current_node != tal_node);
+	} while(current_node != tail_node);
 	
 }
 
