@@ -22,4 +22,7 @@ class circular_doubly_linked_list
 		NODE* find(const PROJECT&);
 		void append(const PROJECT&);
 		bool modify(const PROJECT& oldProject, const PROJECT& newProject);
+		void displayForward();
+		void displayBackward();
+
 };
